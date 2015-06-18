@@ -5,5 +5,7 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("/rest")
 public class WebApplication extends Application {
-
+	public WebApplication() {
+		System.out.println("WebApplication");
+	}
 }

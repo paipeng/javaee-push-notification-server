@@ -13,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import com.paipeng.pushserver.utils.ServerConfig;
+
 public class SessionInterceptor implements Filter {
 	@Inject
 	private Logger log;
@@ -29,7 +31,9 @@ public class SessionInterceptor implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		log.info("doFilter");
-
+		
+		ServerConfig serverConfig = new ServerConfig();
+		log.info("gcm_apikey " + serverConfig.getGcmApiKey());
 		chain.doFilter(request, response);
 		// sessionTokenThreadLocal.set(null);
 		log.info("doFilter done");
