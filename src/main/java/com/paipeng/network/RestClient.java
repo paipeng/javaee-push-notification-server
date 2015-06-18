@@ -6,20 +6,19 @@ import javax.inject.Inject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation;
-import javax.ws.rs.core.Response;
 
 public class RestClient {
 	@Inject
 	protected Logger log;
 	
-	public RestResult test() {
+	public RestResult test(String echo) {
 		Client client;
 		client = ClientBuilder.newClient();
 		// enable POJO mapping using Jackson - see
 		// https://jersey.java.net/documentation/latest/user-guide.html#json.jackson
 		// client.register(JacksonFeature.class);
 
-		String uri = "http://localhost:3004/test";
+		String uri = "http://localhost:3004/test/" + echo;
 
 		Invocation.Builder bldr = client.target(uri)
 				.request("application/json");

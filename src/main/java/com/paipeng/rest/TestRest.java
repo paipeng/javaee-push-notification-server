@@ -35,7 +35,7 @@ public class TestRest {
 		log.info("echo " + echo);
 
 		RestClient client = new RestClient();
-		RestResult ret = client.test();
+		RestResult ret = client.test(echo);
 		return Response.ok(ret).build();
 	}
 }
