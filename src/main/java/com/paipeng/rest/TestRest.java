@@ -12,6 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
+import com.paipeng.network.RestClient;
+import com.paipeng.network.RestResult;
+
 @RequestScoped
 @Path("")
 public class TestRest {
@@ -30,6 +33,9 @@ public class TestRest {
 	@POST
 	public Response echo(@QueryParam("echo") String echo) {
 		log.info("echo " + echo);
-		return Response.ok(echo).build();
+
+		RestClient client = new RestClient();
+		RestResult ret = client.test();
+		return Response.ok(ret).build();
 	}
 }
