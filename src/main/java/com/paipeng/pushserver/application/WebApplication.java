@@ -1,4 +1,4 @@
-package com.paipeng.application;
+package com.paipeng.pushserver.application;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

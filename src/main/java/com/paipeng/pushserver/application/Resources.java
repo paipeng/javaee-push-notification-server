@@ -1,4 +1,4 @@
-package com.paipeng.application;
+package com.paipeng.pushserver.application;
 
 import java.util.logging.Logger;
 

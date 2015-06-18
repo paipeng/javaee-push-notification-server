@@ -1,4 +1,4 @@
-package com.paipeng.rest;
+package com.paipeng.pushserver.rest;
 
 import java.util.logging.Logger;
 
@@ -12,8 +12,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
-import com.paipeng.network.RestClient;
-import com.paipeng.network.RestResult;
+import com.paipeng.pushserver.network.RestClient;
+import com.paipeng.pushserver.network.RestResult;
 
 @RequestScoped
 @Path("")

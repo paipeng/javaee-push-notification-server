@@ -16,7 +16,20 @@
 		<servlet-name>RESTEasy-JSAPI</servlet-name>
 		<url-pattern>/rest/jsapi.js</url-pattern>
 	</servlet-mapping>
- -->
+	 -->
+ 
+ 
+    	<filter>
+    		<filter-name>security-filter</filter-name>
+    		<filter-class>com.paipeng.pushserver.interceptor.SessionInterceptor</filter-class>
+    	</filter>
+    	
+    	<filter-mapping>
+    		<filter-name>security-filter</filter-name>
+    		<url-pattern>/rest/*</url-pattern>
+    	</filter-mapping>
+    	
+    	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
