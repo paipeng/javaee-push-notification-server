@@ -5,7 +5,16 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.paipeng.pushserver.push.gcm.GCMResult;
+import com.paipeng.pushserver.push.gcm.GCMessage;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 public class RestClient {
 	@Inject
@@ -31,5 +40,17 @@ public class RestClient {
 		//return ret;
 	}
 
+	public GCMResult sendMessage(String url, GCMessage gCMessage) {
+		Client client = ClientBuilder.newClient();
+		
+		Invocation.Builder bldr = client.target(url)
+				.request(MediaType.APPLICATION_JSON)
+				.header("Authorization", "key=");
+		
+		
+		Response response = bldr.post(Entity.entity(gCMessage, MediaType.APPLICATION_JSON));
+		//System.out.println("response "  + response.readEntity(String.class));
+		return response.readEntity(GCMResult.class);
+	}
 	
 }
