@@ -10,11 +10,8 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.paipeng.pushserver.push.gcm.GCMResult;
 import com.paipeng.pushserver.push.gcm.GCMessage;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 public class RestClient {
 	@Inject

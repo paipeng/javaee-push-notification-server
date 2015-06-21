@@ -1,6 +1,5 @@
 package com.paipeng.pushserver.push.gcm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GCMResult {
