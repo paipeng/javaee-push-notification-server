@@ -14,11 +14,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.paipeng.pushserver.model.PushMessage;
 import com.paipeng.pushserver.network.RestClient;
 import com.paipeng.pushserver.network.RestResult;
 import com.paipeng.pushserver.push.gcm.GCMResult;
 import com.paipeng.pushserver.push.gcm.GCMServer;
-import com.paipeng.pushserver.push.gcm.GCMessage;
 
 @RequestScoped
 @Path("")
@@ -52,9 +52,9 @@ public class TestRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@POST
-	public Response sendGCM(GCMessage gcMessage) {
-		log.info("redId " + gcMessage.getTo());
-		GCMResult result = gcmServer.sendMessage(gcMessage);
+	public Response sendGCM(PushMessage pushMessage) {
+		log.info("regId " + pushMessage.getGcmMessage().getTo());
+		GCMResult result = gcmServer.sendMessage(pushMessage);
 		
 		return Response.ok(result).build();
 	}

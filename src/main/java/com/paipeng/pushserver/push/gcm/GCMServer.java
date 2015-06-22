@@ -1,5 +1,6 @@
 package com.paipeng.pushserver.push.gcm;
 
+import com.paipeng.pushserver.model.PushMessage;
 import com.paipeng.pushserver.network.RestClient;
 
 public class GCMServer {
@@ -8,9 +9,9 @@ public class GCMServer {
 		
 	}
 	
-	public GCMResult sendMessage(GCMessage gcMessage) {
+	public GCMResult sendMessage(PushMessage pushMessage) {
 		RestClient restClient = new RestClient();
-		GCMResult result = restClient.sendMessage(GOOGLE_GCM_URL, gcMessage);
+		GCMResult result = restClient.sendMessage(GOOGLE_GCM_URL, pushMessage);
 		return result;
 	}
 }

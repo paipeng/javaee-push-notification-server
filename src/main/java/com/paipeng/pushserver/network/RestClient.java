@@ -10,8 +10,8 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.paipeng.pushserver.model.PushMessage;
 import com.paipeng.pushserver.push.gcm.GCMResult;
-import com.paipeng.pushserver.push.gcm.GCMessage;
 
 public class RestClient {
 	@Inject
@@ -37,17 +37,26 @@ public class RestClient {
 		//return ret;
 	}
 
-	public GCMResult sendMessage(String url, GCMessage gCMessage) {
+	public GCMResult sendMessage(String url, PushMessage pushMessage) {
 		Client client = ClientBuilder.newClient();
 		
 		Invocation.Builder bldr = client.target(url)
 				.request(MediaType.APPLICATION_JSON)
-				.header("Authorization", "key=");
+				.header("Authorization", "key=" + pushMessage.getAppKey());
 		
 		
-		Response response = bldr.post(Entity.entity(gCMessage, MediaType.APPLICATION_JSON));
-		//System.out.println("response "  + response.readEntity(String.class));
-		return response.readEntity(GCMResult.class);
+		Response response = bldr.post(Entity.entity(pushMessage.getGcmMessage(), MediaType.APPLICATION_JSON));
+		if (response.getStatus() == 200) {
+			//System.out.println("response "  + response.readEntity(String.class));
+			GCMResult result = response.readEntity(GCMResult.class);
+			result.setStatus(response.getStatus());
+			return result;		
+		} else {
+			GCMResult result = new GCMResult();
+			result.setStatus(response.getStatus());
+			result.setMessage(response.readEntity(String.class));
+			return result;
+		}
 	}
 	
 }

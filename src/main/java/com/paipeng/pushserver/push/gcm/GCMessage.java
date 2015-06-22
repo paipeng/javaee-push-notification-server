@@ -1,5 +1,6 @@
 package com.paipeng.pushserver.push.gcm;
 
+
 public class GCMessage {
 	private String to;
 	private Data data;
@@ -24,10 +25,10 @@ public class GCMessage {
 		this.data = data;
 	}
 	
-	
+
 	public class Data {
 		private String title;
-		private String text;
+		private String text;		
 		
 		public Data() {
 			
@@ -48,8 +49,7 @@ public class GCMessage {
 
 		public void setText(String text) {
 			this.text = text;
-		}
-		
+		}		
 	}
 	
 }

@@ -3,6 +3,9 @@ package com.paipeng.pushserver.push.gcm;
 import java.util.List;
 
 public class GCMResult {
+	private int status;
+	private String message;
+	
 	private long multicast_id;
 	private boolean success;
 	private boolean failure;
@@ -55,6 +58,22 @@ public class GCMResult {
 	}
 	
 	
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 	@Override
 	public String toString() {
